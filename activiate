@@ -81,6 +81,6 @@ GOENV_SHELL=${SHELL:-$(__get_shell)}
 
 # main runtine
 case $1 in
-	debug) __debug; exit 0; break;;
-	*) __set_goenv; break;;
+	debug) __debug; exit 0;
+	*) __set_goenv;
 esac
