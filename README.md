@@ -27,6 +27,14 @@ A shell tool to init a private project gopath dir
 	# vendor.sh rm module_import_path
 	```
 
+## make_gopath.mk
+
+Generate project gopath for makefile.
+
+1. put `make_gopath.mk` to your project top directory	
+2. add `include make_gopath.mk` to your project Makefile
+3. make sure target `gopath` to be called
+
 # Detail
 
 A private gopath will be created at `${HOME}/.goenv/{project_private_dir}`.
