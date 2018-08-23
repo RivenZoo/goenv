@@ -9,10 +9,13 @@ function log {
 
 function is_git_repo_url {
 	param=$1
-	if [[ "${param:0:3}" = "git" ]]; then
+	if [[ "${param:0:4}" = "git:" ]]; then
 		return 1
 	fi
-	if [[ "${param:0:4}" = "http" ]]; then
+	if [[ "${param:0:7}" = "http://" ]]; then
+		return 1
+	fi
+	if [[ "${param:0:8}" = "https://" ]]; then
 		return 1
 	fi
 	return 0
