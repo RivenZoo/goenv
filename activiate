@@ -55,6 +55,7 @@ function __set_goenv {
 	if [ ! -f "${GOENV_GOPATH}/workdir" ]; then
 		mkdir -p ${GOENV_HOME}
 		mkdir -p ${GOENV_GOPATH}/src ${GOENV_GOPATH}/bin ${GOENV_GOPATH}/pkg
+		ln -s ${WORKDIR} ${GOENV_GOPATH}/src/$(basename ${WORKDIR})
 		echo ${WORKDIR} > ${GOENV_GOPATH}/workdir
 	fi
 	
