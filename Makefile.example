@@ -1,0 +1,5 @@
+
+dummy: gopath
+	@echo $(GOPATH)
+
+include make_gopath.mk	
