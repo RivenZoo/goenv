@@ -15,6 +15,10 @@ function deactiviate {
 		export PS1=${OLD_PS1}
 		unset OLD_PS1
 	fi
+	if [ -n "${OLD_WORKDIR}" ]; then
+		cd ${OLD_WORKDIR}
+		unset OLD_WORKDIR
+	fi
 }
 
 # internal function
@@ -71,10 +75,15 @@ function __set_goenv {
 	OLD_PS1=${OLD_PS1:-${PS1}}
 	PS1="${OLD_PS1} ($GOENV_GOPATH) "
 
+	OLD_WORKDIR=${OLD_WORKDIR:-${WORKDIR}}
+
 	export OLD_PS1
 	export PS1
 	export GOPATH
 	export OLD_GOPATH
+	export OLD_WORKDIR
+
+	cd ${GOENV_GOPATH}/src/$(basename ${WORKDIR})
 }
 
 function __get_shell {
