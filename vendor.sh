@@ -51,11 +51,13 @@ function add_by_module_path {
 	repo=$1
 	spec=$2
 
+	go get -u ${repo}
+
 	fetch_url=${repo}
 	if [[ -n "${spec}" ]]; then
 		fetch_url=${fetch_url}@${spec}
 	fi
-	${GOVENDOR} get ${fetch_url}
+	${GOVENDOR} add ${fetch_url}
 }
 
 function add {
