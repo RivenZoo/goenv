@@ -86,12 +86,12 @@ function update {
 	local_repo=${gopath}/src/${repo}
 
 	fetch_url=${repo}
-	update_cmd=(cd ${local_repo} && git checkout master && git pull --rebase origin master)
+	update_cmd=cd ${local_repo} && git checkout master && git pull --rebase origin master
 	if [[ -n "${spec}" ]]; then
 		fetch_url=${fetch_url}@${spec}
-		update_cmd=(cd ${local_repo} && git fetch --all --tags --prune && git checkout ${spec})
+		update_cmd=cd ${local_repo} && git fetch --all --tags --prune && git checkout ${spec}
 	fi
-	${update_cmd}
+	(${update_cmd})
 
 	${GOVENDOR} update ${fetch_url}
 }
